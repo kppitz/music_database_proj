@@ -4,10 +4,41 @@ $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
-$song = $_GET['song_name'];
-$artist = $_GET['artist_name'];
-$album = $_GET['album_name'];
-$genre = $_GET['genre'];
+if (!isset($_GET['song_name'])
+{
+  $song = mysql_query("SELECT Song_name FROM Song");
+}
+else
+{
+  $song = $_GET['song_name'];
+}
+
+if (!isset($_GET['artist_name'])
+{
+  $artist = mysql_query("SELECT Artist_name FROM Song");
+}
+else
+{
+  $artist = $_GET['artist_name'];
+}
+
+if (!isset($_GET['album_name'])
+{
+  $album = mysql_query("SELECT Album_name FROM Album");
+}
+else
+{
+  $album = $_GET['album_name'];
+}
+
+if (!isset($_GET['genre'])
+{
+  $genre = mysql_query("SELECT Genre FROM Album");
+}
+else
+{
+  $genre = $_GET['genre'];
+}
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn)
