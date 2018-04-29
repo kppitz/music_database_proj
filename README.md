@@ -6,4 +6,4 @@ To run php files on internet:
 3. make sure php files are saved in xampp/htdocs
 4. go to a web browser, and type http://localhost/musicdb.php
 5. create musicdbproject in PHPmyAdmin
-6. import Tables.sql to create database structure
+6. import Tables.sql and Insert_Data.sql to create database structure
