@@ -45,7 +45,7 @@
     <h5 class="col-lg-6">Search for songs by name, artist, album, or genre </h5>
   </div>
 
-  <form>
+  <form action="search_music.php" method="get">
   <div class="col-md-4">
   <div class="form-group">
     <label for="search_song">Song Name</label>

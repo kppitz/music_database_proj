@@ -4,40 +4,40 @@ $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
-if (!isset($_GET['song_name'])
-{
-  $song = mysql_query("SELECT Song_name FROM Song");
-}
-else
+if (!empty($_GET['song_name']))
 {
   $song = $_GET['song_name'];
 }
-
-if (!isset($_GET['artist_name'])
-{
-  $artist = mysql_query("SELECT Artist_name FROM Song");
-}
 else
+{
+  $song = 'SELECT Song_name FROM Song';
+}
+
+if (!empty($_GET['artist_name']))
 {
   $artist = $_GET['artist_name'];
 }
-
-if (!isset($_GET['album_name'])
-{
-  $album = mysql_query("SELECT Album_name FROM Album");
-}
 else
+{
+  $artist = 'SELECT DISTINCT Artist_name FROM SONG';
+}
+
+if (!empty($_GET['album_name']))
 {
   $album = $_GET['album_name'];
 }
-
-if (!isset($_GET['genre'])
+else
 {
-  $genre = mysql_query("SELECT Genre FROM Album");
+  $album = 'SELECT Album_name FROM Album';
+}
+
+if (!empty($_GET['genre']))
+{
+  $genre = $_GET['genre'];
 }
 else
 {
-  $genre = $_GET['genre'];
+  $genre = 'SELECT Genre FROM Album';
 }
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,10 +46,10 @@ if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT Song_name, Artist_name, Album_name
+$sql = "SELECT Song.Song_name, Song.Artist_name, Song.Album_name
         FROM Song, Album
         WHERE Song.Song_name = '$song' AND Song.Artist_name = '$artist' AND
-        Song.Album_name = '$album' AND Album.genre = '$genre' AND
+        Song.Album_name = '$album' AND Album.Genre = '$genre' AND
         Song.Album_name = Album.Album_name AND Song.Artist_name = Album.Artist_name";
 
 $result = $conn->query($sql);
@@ -58,7 +58,7 @@ if ($result->num_rows > 0)
 {
     while($row = $result->fetch_assoc())
     {
-        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+        echo "Song: " . $row["Song_name"]. " | Artist: " . $row["Artist_name"]. " | Album: " . $row["Album_name"]. "<br>";
     }
 }
 else
@@ -68,7 +68,7 @@ else
 
 if (mysqli_query($conn, $sql))
 {
-    echo "New record created successfully";
+    echo "Query successful";
 }
 else
 {
