@@ -21,15 +21,16 @@
     <!--<a class="navbar-brand" href="#">Navbar</a>-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">(current)
+        <li class="nav-item">
+          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">
           </span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="account.php">Account</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Search Music</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Search Music<span class="sr-only">(current)
+          </span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="playlists.php">Playlists</a>
@@ -39,13 +40,13 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="display-4">Search for Music</h1>
-    <hr class="my-2">
-    <p>Search for songs by name, artist, album, or genre, and see what you can
-      find!</p>
+    <h1 class="col-lg-6 display-4">Search for Music</h1>
+    <hr class="my-3">
+    <h5 class="col-lg-6">Search for songs by name, artist, album, or genre </h5>
   </div>
 
   <form>
+  <div class="col-md-4">
   <div class="form-group">
     <label for="search_song">Song Name</label>
     <input type="text" class="form-control" id="song_name" placeholder="Search">
@@ -63,6 +64,7 @@
     <input type="text" class="form-control" id="genre" placeholder="Search">
   </div>
   <button type="submit" class="btn btn-primary">Search</button>
+</div>
 </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

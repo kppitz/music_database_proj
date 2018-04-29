@@ -21,8 +21,8 @@
     <!--<a class="navbar-brand" href="#">Navbar</a>-->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">(current)
+        <li class="nav-item">
+          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">
           </span></a>
         </li>
         <li class="nav-item">
@@ -32,16 +32,17 @@
           <a class="nav-link" href="search.php">Search Music</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Playlists</a>
+          <a class="nav-link active" href="#">Playlists<span class="sr-only">(current)
+          </span></a>
         </li>
      </ul>
     </div>
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="display-4">Playlists</h1>
-    <p>View your Playlists</p>
+    <h1 class="col-lg-6 display-4">Playlists</h1>
     <hr class="my-3">
+    <h5 class="col-lg-6">View your Playlists</h5>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -39,12 +39,14 @@
   </nav>
 
   <div class="Jumbotron">
+    <div class = "col-lg-6">
     <h1 class="display-4">Music Database</h1>
     <p class="lead">This is a simple music collection database, where you can
       search your favorite songs or find new ones, create playlists for every
       occasion, and explore what other people are listening to!</p>
+    </div>
     <hr class="my-4">
-    <p>Click on an option in the menu to get started!</p>
+    <p class="col-lg-6">Click on an option in the menu to get started!</p>
   </div>
 
 <?php

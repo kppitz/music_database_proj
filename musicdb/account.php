@@ -22,11 +22,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">(current)
+          <a class="nav-link" href="../musicdb.php">Home<span class="sr-only">
           </span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Account</a>
+          <a class="nav-link" href="#">Account<span class="sr-only">(current)
+          </span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="search.php">Search Music</a>
@@ -39,37 +40,29 @@
   </nav>
 
   <div class="Jumbotron">
+    <div class="col-lg-6">
     <h1 class="display-4">Account</h1>
-    <p>Log in to view your account or create your own!</p>
+    </div>
     <hr class="my-3">
   </div>
 
-  <h3 class="display-5">Create Account</h3>
-  <form>
-
+  <h5 class="col-lg-6 display-5">Change Account Settings</h5>
+  <form class="col-md-4">
     <div class="form-group">
       <label for="input_email">Email address</label>
       <input type="email" class="form-control" id="input_email"  placeholder="Enter email">
     </div>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" placeholder="Username">
+      <input type="text" class="form-control" id="username"
+        placeholder="Enter Username">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input type="password" class="form-control" id="exampleInputPassword1"
+        placeholder="Enter Password">
     </div>
-  <button type="submit" class="btn btn-primary">Create Account</button>
-
-  <hr class="my-3">
-  <h3 class="display-5">Login</h3>
-  <form>
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="Username">
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-
+  <button type="submit" class="btn btn-primary">Save Changes</button>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
