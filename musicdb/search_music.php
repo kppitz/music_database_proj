@@ -4,53 +4,33 @@ $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
-if (!empty($_GET['song_name']))
-{
-  $song = $_GET['song_name'];
-}
-else
-{
-  $song = 'SELECT Song_name FROM Song';
-}
-
-if (!empty($_GET['artist_name']))
-{
-  $artist = $_GET['artist_name'];
-}
-else
-{
-  $artist = 'SELECT DISTINCT Artist_name FROM SONG';
-}
-
-if (!empty($_GET['album_name']))
-{
-  $album = $_GET['album_name'];
-}
-else
-{
-  $album = 'SELECT Album_name FROM Album';
-}
-
-if (!empty($_GET['genre']))
-{
-  $genre = $_GET['genre'];
-}
-else
-{
-  $genre = 'SELECT Genre FROM Album';
-}
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn)
 {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$condition1="";
+$condition2="";
+$condition3="";
+$condition4="";
+$song=trim($_GET['song_name']);
+$artist=trim($_GET['artist_name']);
+$album=trim($_GET['album_name']);
+$genre=trim($_GET['genre']);
+
+if(isset($_GET['song_name']))
+   $condition1=" AND Song.Song_name=$song";
+if(isset($_GET['artist_name']))
+   $condition2=" AND Song.Artist_name=$artist";
+if(isset($_GET['album_name']))
+   $condition3=" AND Song.Album_name=$album";
+if(isset($_GET['genre']))
+  $condition4=" AND Album.Genre=$genre";
+
 $sql = "SELECT Song.Song_name, Song.Artist_name, Song.Album_name
         FROM Song, Album
-        WHERE Song.Song_name = '$song' AND Song.Artist_name = '$artist' AND
-        Song.Album_name = '$album' AND Album.Genre = '$genre' AND
-        Song.Album_name = Album.Album_name AND Song.Artist_name = Album.Artist_name";
+        WHERE Song.Album_name = Album.Album_name AND Song.Artist_name = Album.Artist_name $condition1 $condition2 $condition3 $condition4";
 
 $result = $conn->query($sql);
 
