@@ -40,10 +40,17 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="col-lg-6 display-4">Playlists</h1>
+    <h1 class="col-lg-6 display-4">Personal Playlists</h1>
     <hr class="my-3">
     <h5 class="col-lg-6">View your Playlists</h5>
   </div>
+
+  <form class="col-md-4" action="display_playlist.php" method="get">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username"  placeholder="Enter username" name = "username">
+    </div>
+    <button type="submit" class="btn btn-primary">Find Playlists</button>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -43,6 +43,7 @@ CREATE Table Paying_User(
 	User_name VARCHAR(30) NOT NULL PRIMARY KEY,
 	FOREIGN KEY (User_name) REFERENCES User_Account(User_name)
 );
+
 CREATE Table Playlist(
 	Playlist_name VARCHAR(30) NOT NULL,
 	Num_songs INT,
