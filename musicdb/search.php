@@ -49,19 +49,19 @@
   <div class="col-md-4">
   <div class="form-group">
     <label for="search_song">Song Name</label>
-    <input type="text" class="form-control" id="song_name" placeholder="Search">
+    <input type="text" class="form-control" id="song_name" placeholder="Search" name = "song_name">
   </div>
   <div class="form-group">
     <label for="search_artist">Artist Name</label>
-    <input type="text" class="form-control" id="artist_name" placeholder="Search">
+    <input type="text" class="form-control" id="artist_name" placeholder="Search" name = "artist_name">
   </div>
   <div class="form-group">
     <label for="search_album">Album Title</label>
-    <input type="text" class="form-control" id="album_name" placeholder="Search">
+    <input type="text" class="form-control" id="album_name" placeholder="Search" name = "album_name">
   </div>
   <div class="form-group">
     <label for="search_genre">Music Genre</label>
-    <input type="text" class="form-control" id="genre" placeholder="Search">
+    <input type="text" class="form-control" id="genre" placeholder="Search" name = "genre">
   </div>
   <button type="submit" class="btn btn-primary">Search</button>
 </div>

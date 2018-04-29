@@ -1,19 +1,5 @@
 USE musicdbproject;
 
-DROP TABLE IF EXISTS Create_Playlist;
-DROP TABLE IF EXISTS Add_Song;
-DROP TABLE IF EXISTS Include;
-DROP TABLE IF EXISTS Produce;
-DROP TABLE IF EXISTS Other_User_Playlist;
-DROP TABLE IF EXISTS Personal_Playlist;
-DROP TABLE IF EXISTS Playlist;
-DROP TABLE IF EXISTS Paying_User;
-DROP TABLE IF EXISTS Free_User;
-DROP TABLE IF EXISTS Song;
-DROP TABLE IF EXISTS Album;
-DROP TABLE IF EXISTS Artist;
-DROP TABLE IF EXISTS User_Account;
-
 CREATE Table Artist(
 	Artist_name VARCHAR(30) PRIMARY KEY
 );
@@ -46,7 +32,7 @@ CREATE Table User_Account(
 
 CREATE Table Free_User(
 	User_name VARCHAR(30) NOT NULL PRIMARY KEY,
-	Free_time_left INT NOT NULL CHECK( >0),
+	Free_time_left INT NOT NULL CHECK( Free_time_left>0),
 	FOREIGN KEY (User_name) REFERENCES User_Account(User_name)
 );
 
@@ -123,17 +109,3 @@ CREATE Table Create_Playlist(
 	FOREIGN KEY (User_name) REFERENCES User_Account(User_name),
 	FOREIGN KEY (Playlist_name) REFERENCES Playlist(Playlist_name)
 );
-
-DROP TABLE Create_Playlist;
-DROP TABLE Add_Song;
-DROP TABLE Include;
-DROP TABLE Produce;
-DROP TABLE Other_User_Playlist;
-DROP TABLE Personal_Playlist;
-DROP TABLE Playlist;
-DROP TABLE Paying_User;
-DROP TABLE Free_User;
-DROP TABLE Song;
-DROP TABLE Album;
-DROP TABLE Artist;
-DROP TABLE User_Account;

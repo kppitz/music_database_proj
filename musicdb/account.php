@@ -47,20 +47,30 @@
   </div>
 
   <h5 class="col-lg-6 display-5">Change Account Settings</h5>
-  <form class="col-md-4">
+  <form class="col-md-4" action="create_account.php" method="get">
     <div class="form-group">
       <label for="input_email">Email address</label>
-      <input type="email" class="form-control" id="input_email"  placeholder="Enter email">
+      <input type="email" class="form-control" id="input_email"  placeholder="Enter email" name = "email">
     </div>
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username"
-        placeholder="Enter Username">
+        placeholder="Enter Username" name = "username">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1"
-        placeholder="Enter Password">
+        placeholder="Enter Password" name = "password">
+    </div>
+    <div class="form-group">
+      <label for="f_name">First Name</label>
+      <input type="text" class="form-control" id="f_name"
+        placeholder="Enter First Name" name = "f_name">
+    </div>
+    <div class="form-group">
+      <label for="l_name">Last Name</label>
+      <input type="text" class="form-control" id="l_name"
+        placeholder="Enter Last Name" name = "l_name">
     </div>
   <button type="submit" class="btn btn-primary">Save Changes</button>
 
