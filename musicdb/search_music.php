@@ -72,6 +72,9 @@ $sql="";
           VALUES ('Me', 'Library', '$song_name', '$artist_name', '$album_name')";
 }*/
 
+if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album_name'])
+    ||!empty($_GET['genre']))
+{
   if(!empty($_GET['song_name']))
   {
     $song=$_GET['song_name'];
@@ -134,13 +137,17 @@ $sql="";
     }
     else
     {
-        echo "<h5>0 results</h5>";
+        echo "<h5>0 Results found. Please go back and change your search.</h5>";
     }
-
     if (!mysqli_query($conn, $sql))
     {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+}
+else
+{
+    echo "<h5>No Search parameters entered. Please go back and change your search.</h5>";
+}
 
 mysqli_close($conn);
 ?>

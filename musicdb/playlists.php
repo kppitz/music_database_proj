@@ -1,4 +1,3 @@
-<?php include 'display_playlist.php'?>
 <!DOCTYPE html>
 <html lang="en">
 
