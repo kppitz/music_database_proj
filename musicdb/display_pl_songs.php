@@ -42,7 +42,7 @@
   <div class="Jumbotron">
     <h1 class="col-lg-6 display-4"> Playlist Results</h1>
     <hr class="my-3">
-    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Search</a></h6>
+    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Playlist Search</a></h6>
     <hr class="my-3">
   </div>
   </body>
@@ -55,61 +55,50 @@ $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
+$plname = $_SESSION['plname'];
+$user = $_SESSION['user'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn)
 {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$user = "";
-$pl_query = "";
-$s_query = "";
-$plname = "";
+$s_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
+            FROM Add_Song
+            WHERE Add_Song.Playlist_name = '$plname' AND Add_Song.User_name = '$user'";
 
-if(!empty($_GET['username']))
+$s_result = $conn->query($s_query);
+
+if($s_result->num_rows > 0)
 {
-  $user = $_GET['username'];
-
-  $pl_query = "SELECT Playlist.Playlist_name FROM Playlist WHERE Playlist.User_name = '$user'";
-
-  $pl_result = $conn->query($pl_query);
-
-  if ($pl_result->num_rows > 0)
-  {
     echo "<table class='table table-hover'>
               <thead>
                 <tr>
-                  <th scope='col'>Playlist</th>
-                  <th scope='col'>User</th>
+                <th scope='col'>Song</th>
+                <th scope='col'>Artist</th>
+                <th scope='col'>Album</th>
+                <th></th>
                 </tr>
               </thead>";
-
-    while($row = $pl_result->fetch_assoc())
+    while($row = $s_result->fetch_assoc())
     {
-      $plname = $row["Playlist_name"];
-      $_SESSION['plname'] = $plname;
-      $_SESSION['user'] = $user;
+        $song_name = $row["Song_name"];
+        $artist_name = $row["Artist_name"];
+        $album_name = $row["Album_name"];
 
-      echo "<tr>
-              <td><a href='display_pl_songs.php'>" . $plname. "</a></td>
-              <td>" . $user. "</td>
-            </tr>";
+        echo"<form>
+              <tr>
+                <td>" . $row["Song_name"]. "</td>
+                <td>" . $row["Artist_name"]. "</td>
+                <td>" . $row["Album_name"]. "</td>
+                <td><button type='button' action='add_song($song_name, $artist_name, $album_name)'
+                  class='btn-outline-primary btn-sm'>Add to Playlist
+                </button>
+                </tr>
+              </form>";
     }
   }
-  else
-  {
-    echo "<h5>Username does not exist. Please go back to change your search.</h5>";
-  }
-  if (!mysqli_query($conn, $pl_query))
-  {
-    echo "Error: " . $pl_query . "<br>" . mysqli_error($conn);
-  }
-}
-else
-{
-  echo "<h5>No username entered. Please go back to change your search.</h5>";
-}
-
 
 mysqli_close($conn);
 ?>

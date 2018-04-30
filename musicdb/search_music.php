@@ -40,14 +40,11 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="col-lg-6 display-4">Search for Music</h1>
+    <h1 class="col-lg-6 display-4">Music Results</h1>
     <hr class="my-3">
-    <div class="col-lg-6 form-inline">
-      <h4>Results</h4>
       <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
     </div>
     <hr class="my-3">
-  </div>
 
 </body>
 </html>
@@ -66,11 +63,11 @@ if (!$conn)
 
 $sql="";
 
-/*function add_song($song_name, $artist_name, $album_name)
+function add_song($song_name, $artist_name, $album_name)
 {
   $sql = "INSERT INTO Add_Song(Username, Playlist_name, Song_name, Artist_name, Album_name);
           VALUES ('Me', 'Library', '$song_name', '$artist_name', '$album_name')";
-}*/
+}
 
 if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album_name'])
     ||!empty($_GET['genre']))
@@ -139,10 +136,10 @@ if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album
     {
         echo "<h5>0 Results found. Please go back and change your search.</h5>";
     }
-    if (!mysqli_query($conn, $sql))
-    {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+if (!mysqli_query($conn, $sql))
+{
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
 }
 else
 {
