@@ -123,3 +123,33 @@ INSERT INTO Other_User_Playlist VALUES("GreenGuy", "Fun Music", "BlueMan");
 INSERT INTO Other_User_Playlist VALUES("OrangeGal", "Girls Night", "PurpleLady");
 INSERT INTO Other_User_Playlist VALUES("PurpleLady", "Country Mix", "BlueMan");
 INSERT INTO Other_User_Playlist VALUES("PurpleLady", "Country Mix", "GreenGuy");
+
+INSERT INTO Add_Song VALUES("BlueMan", "Roadtrip", "Heavydirtysoul", "Twenty One Pilots", "Blurryface");
+INSERT INTO Add_Song VALUES("BlueMan", "Roadtrip", "Stressed Out", "Twenty One Pilots", "Blurryface");
+INSERT INTO Add_Song VALUES("BlueMan", "Roadtrip", "Ride", "Twenty One Pilots", "Blurryface");
+INSERT INTO Add_Song VALUES("BlueMan", "Roadtrip", "Fairly Local", "Twenty One Pilots", "Blurryface");
+INSERT INTO Add_Song VALUES("BlueMan", "Roadtrip", "Tear In My Heart", "Twenty One Pilots", "Blurryface");
+
+INSERT INTO Add_Song VALUES("OrangeGal", "Girls Night", "State of Grace", "Taylor Swift", "Red");
+INSERT INTO Add_Song VALUES("OrangeGal", "Girls Night", "Red", "Taylor Swift", "Red");
+INSERT INTO Add_Song VALUES("OrangeGal", "Girls Night", "Treacherous", "Taylor Swift", "Red");
+INSERT INTO Add_Song VALUES("OrangeGal", "Girls Night", "I Knew You Were Trouble", "Taylor Swift", "Red");
+INSERT INTO Add_Song VALUES("OrangeGal", "Girls Night", "All Too Well", "Taylor Swift", "Red");
+
+INSERT INTO Add_Song VALUES("BlueMan", "Party Mix", "Walk On Water", "Eminem", "Revival");
+INSERT INTO Add_Song VALUES("BlueMan", "Party Mix", "Believe", "Eminem", "Revival");
+INSERT INTO Add_Song VALUES("BlueMan", "Party Mix", "Chloraseptic", "Eminem", "Revival");
+INSERT INTO Add_Song VALUES("BlueMan", "Party Mix", "Untouchable", "Eminem", "Revival");
+INSERT INTO Add_Song VALUES("BlueMan", "Party Mix", "River", "Eminem", "Revival");
+
+INSERT INTO Add_Song VALUES("PurpleLady", "Country Mix", "Craving You", "Thomas Rhett", "Life Changes");
+INSERT INTO Add_Song VALUES("PurpleLady", "Country Mix", "Unforgettable", "Thomas Rhett", "Life Changes");
+INSERT INTO Add_Song VALUES("PurpleLady", "Country Mix", "Sixteen", "Thomas Rhett", "Life Changes");
+INSERT INTO Add_Song VALUES("PurpleLady", "Country Mix", "Drink A Little Beer", "Thomas Rhett", "Life Changes");
+INSERT INTO Add_Song VALUES("PurpleLady", "Country Mix", "Marry Me", "Thomas Rhett", "Life Changes");
+
+INSERT INTO Add_Song VALUES("GreenGuy", "Fun Music", "Yes Sir, That's My Baby", "Frank Sinatra", "Baby Blue Eyes");
+INSERT INTO Add_Song VALUES("GreenGuy", "Fun Music", "Ain't She Sweet", "Frank Sinatra", "Baby Blue Eyes");
+INSERT INTO Add_Song VALUES("GreenGuy", "Fun Music", "It's A Wonderful World", "Frank Sinatra", "Baby Blue Eyes");
+INSERT INTO Add_Song VALUES("GreenGuy", "Fun Music", "Isn't She Lovely", "Frank Sinatra", "Baby Blue Eyes");
+INSERT INTO Add_Song VALUES("GreenGuy", "Fun Music", "I've Got My Love To Keep Me Warm", "Frank Sinatra", "Baby Blue Eyes");

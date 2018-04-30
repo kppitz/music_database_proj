@@ -41,9 +41,9 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="col-lg-6 display-4">Personal Playlists</h1>
+    <h1 class="col-lg-6 display-4"> Playlists</h1>
     <hr class="my-3">
-    <h5 class="col-lg-6">View your Playlists</h5>
+    <h5 class="col-lg-6">View your playlists or another user's playlists</h5>
   </div>
 
   <form class="col-md-4" action="display_playlist.php" method="get">
