@@ -47,20 +47,16 @@
   </div>
 
   <h5 class="col-lg-6 display-5">Change Account Settings</h5>
+  <h6 class="col-lg-6 display-5">Cannot change username and email at the same time!</h6>
   <form class="col-md-4" action="create_account.php" method="get">
     <div class="form-group">
       <label for="input_email">Email address</label>
-      <input type="email" class="form-control" id="input_email"  placeholder="Enter email" name = "email">
+      <input type="email" class="form-control" id="input_email"  placeholder="Enter Email" name = "email">
     </div>
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username"
         placeholder="Enter Username" name = "username">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1"
-        placeholder="Enter Password" name = "password">
     </div>
     <div class="form-group">
       <label for="f_name">First Name</label>
