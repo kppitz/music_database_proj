@@ -43,10 +43,14 @@
     <h1 class="col-lg-6 display-4">Search for Music</h1>
     <hr class="my-3">
     <div class="col-lg-6 form-inline">
-      <h4>Results</h4> <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
+      <h4>Results</h4>
+      <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
     </div>
     <hr class="my-3">
   </div>
+
+</body>
+</html>
 
 <?php
 $servername = "localhost";
@@ -97,32 +101,40 @@ $sql="";
             WHERE Song.Album_name = Album.Album_name AND Album.genre = '$genre'";
   }
 
+  $result = $conn->query($sql);
 
+  if ($result->num_rows > 0)
+  {
+      echo "<table class='table table-hover'>
+                <thead>
+                  <tr>
+                  <th scope='col'>Song</th>
+                  <th scope='col'>Artist</th>
+                  <th scope='col'>Album</th>
+                  <th></th>
+                  </tr>
+                </thead>";
+      while($row = $result->fetch_assoc())
+      {
+          $song_name = $row["Song_name"];
+          $artist_name = $row["Artist_name"];
+          $album_name = $row["Album_name"];
 
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0)
-    {
-        while($row = $result->fetch_assoc())
-        {
-            $song_name = $row["Song_name"];
-            $artist_name = $row["Artist_name"];
-            $album_name = $row["Album_name"];
-
-            echo"<form class='form-inline'>
-                  <div class='col-sm-4'>
-                  <h5>Song: " . $row["Song_name"]. " | Artist: " . $row["Artist_name"]. " | Album: " . $row["Album_name"]. "<br>
-                  </h5>
-                  </div>
-                  <button type='button' action='add_song($song_name, $artist_name, $album_name)'
+          echo"<form>
+                <tr>
+                  <td>" . $row["Song_name"]. "</td>
+                  <td>" . $row["Artist_name"]. "</td>
+                  <td>" . $row["Album_name"]. "</td>
+                  <td><button type='button' action='add_song($song_name, $artist_name, $album_name)'
                     class='btn-outline-primary btn-sm'>Add to Playlist
                   </button>
-                  </form>";
-        }
+                  </tr>
+                </form>";
+      }
     }
     else
     {
-        echo "0 results";
+        echo "<h5>0 results</h5>";
     }
 
     if (!mysqli_query($conn, $sql))

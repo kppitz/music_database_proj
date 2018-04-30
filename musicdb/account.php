@@ -48,6 +48,7 @@
 
   <h5 class="col-lg-6 display-5">Change Account Settings</h5>
   <h6 class="col-lg-6 display-5">Cannot change username and email at the same time!</h6>
+  <hr class="my-3">
   <form class="col-md-4" action="create_account.php" method="get">
     <div class="form-group">
       <label for="input_email">Email address</label>

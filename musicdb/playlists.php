@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
 </head>
-
 <body>
 
   <!-- navbar -->
@@ -41,17 +40,21 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="col-lg-6 display-4"> Playlists</h1>
+    <h1 class="col-lg-6 display-4">Playlists</h1>
     <hr class="my-3">
     <h5 class="col-lg-6">View your playlists or another user's playlists</h5>
+    <hr class="my-3">
   </div>
 
-  <form class="col-md-4" action="display_playlist.php" method="get">
+  <form class="col-lg-6" action="display_playlist.php" method="get">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" id="username"  placeholder="Enter username" name = "username">
+      <div class="form-inline">
+      <input type="text" class="form-control" id="username"  placeholder="Enter username"
+            name = "username">
+      <button type="submit" class="btn btn-primary">Find Playlists</button>
     </div>
-    <button type="submit" class="btn btn-primary">Find Playlists</button>
+  </div>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

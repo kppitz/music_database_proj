@@ -41,25 +41,10 @@
 
   <div class="Jumbotron">
     <h1 class="col-lg-6 display-4"> Playlist Results</h1>
+    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Search</a></h6>
     <hr class="my-3">
   </div>
-
-  <div class="col-lg-6">
-    <button class="btn btn-primary"> <a href = "playlist.php">Return to search</a></button>
-    <hr>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
   </body>
-
   </html>
 
 <?php
@@ -74,14 +59,18 @@ if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$user = $_GET['username'];
+$user = "";
 
-$pl_query = "SELECT Playlist.Playlist_name FROM Playlist WHERE Playlist.User_name = '$user'";
-
-$pl_result = $conn->query($pl_query);
-
-if ($pl_result->num_rows > 0)
+if(!empty($_GET['username']))
 {
+  $user = $_GET['username'];
+
+  $pl_query = "SELECT Playlist.Playlist_name FROM Playlist WHERE Playlist.User_name = '$user'";
+
+  $pl_result = $conn->query($pl_query);
+
+  if ($pl_result->num_rows > 0)
+  {
     while($row = $pl_result->fetch_assoc())
     {
         $plname = $row["Playlist_name"];
@@ -91,11 +80,8 @@ if ($pl_result->num_rows > 0)
           </div>";
         $s_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
         FROM Add_Song
-<<<<<<< HEAD
-        WHERE Add_Song.Playlist_name = $row["Playlist_name"]";
-=======
         WHERE Add_Song.Playlist_name = '$plname'";
->>>>>>> 00f04d5c3b4d6ec64b49fe50e679cf25228ea00d
+
         $s_result = $conn->query($s_query);
 
         if($s_result->num_rows > 0)
@@ -109,16 +95,17 @@ if ($pl_result->num_rows > 0)
           echo "<br>";
         }
     }
-}
-else
-{
-    echo "0 results";
+  }
+  else
+  {
+    echo "<h5>0 results</h5>";
+  }
+  if (!mysqli_query($conn, $pl_query))
+  {
+    echo "Error: " . $pl_query . "<br>" . mysqli_error($conn);
+  }
 }
 
-if (!mysqli_query($conn, $pl_query))
-{
-    echo "Error: " . $pl_query . "<br>" . mysqli_error($conn);
-}
 
 mysqli_close($conn);
 ?>
