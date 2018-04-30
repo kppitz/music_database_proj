@@ -61,7 +61,7 @@
         <label for="search_song">Artist Name</label>
         <div class="form-inline">
         <input type="text" class="form-control" id="artist_name" placeholder="Search"
-              name = "_name">
+              name = "artist_name">
         <button type="submit" class="btn btn-primary">Search Artist</button>
         </div>
       </div>

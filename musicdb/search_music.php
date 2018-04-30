@@ -60,6 +60,8 @@ if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$sql="";
+
 /*function add_song($song_name, $artist_name, $album_name)
 {
   $sql = "INSERT INTO Add_Song(Username, Playlist_name, Song_name, Artist_name, Album_name);
@@ -92,7 +94,7 @@ if (!$conn)
     $genre=($_GET['genre']);
     $sql = "SELECT Song.Song_name, Song.Artist_name, Song.Album_name
             FROM Song, Album
-            WHERE Song.Album_name = Album.Album_name, Album.genre = '$genre'";
+            WHERE Song.Album_name = Album.Album_name AND Album.genre = '$genre'";
   }
 
 
