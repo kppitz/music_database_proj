@@ -1,3 +1,4 @@
+<? include 'search_music.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,29 +44,45 @@
     <h1 class="col-lg-6 display-4">Search for Music</h1>
     <hr class="my-3">
     <h5 class="col-lg-6">Search for songs by name, artist, album, or genre </h5>
+    <hr class="my-3">
   </div>
 
-  <form action="search_music.php" method="get">
-  <div class="col-md-4">
-  <div class="form-group">
-    <label for="search_song">Song Name</label>
-    <input type="text" class="form-control" id="song_name" placeholder="Search" name = "song_name">
-  </div>
-  <div class="form-group">
-    <label for="search_artist">Artist Name</label>
-    <input type="text" class="form-control" id="artist_name" placeholder="Search" name = "artist_name">
-  </div>
-  <div class="form-group">
-    <label for="search_album">Album Title</label>
-    <input type="text" class="form-control" id="album_name" placeholder="Search" name = "album_name">
-  </div>
-  <div class="form-group">
-    <label for="search_genre">Music Genre</label>
-    <input type="text" class="form-control" id="genre" placeholder="Search" name = "genre">
-  </div>
-  <button type="submit" class="btn btn-primary">Search</button>
-</div>
-</form>
+  <form class="col-lg-6" action="search_music.php" method="get">
+      <div class="form-group">
+        <label for="search_song">Song Name</label>
+        <div class="form-inline">
+        <input type="text" class="form-control" id="song_name" placeholder="Search"
+              name = "song_name">
+        <button type="submit" class="btn btn-primary">Search Song</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="search_song">Artist Name</label>
+        <div class="form-inline">
+        <input type="text" class="form-control" id="artist_name" placeholder="Search"
+              name = "_name">
+        <button type="submit" class="btn btn-primary">Search Artist</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="search_album">Album Title</label>
+        <div class="form-inline">
+        <input type="text" class="form-control" id="album_name" placeholder="Search"
+        name = "album_name">
+        <button type="submit" class="btn btn-primary">Search Album</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="search_genre">Music Genre</label>
+        <div class="form-inline">
+        <input type="text" class="form-control" id="genre" placeholder="Search" name = "genre">
+        <button type="submit" class="btn btn-primary">Search Genre</button>
+      </div>
+    </div>
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

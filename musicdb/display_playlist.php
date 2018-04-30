@@ -22,8 +22,8 @@ if ($pl_result->num_rows > 0)
     {
         echo $row["Playlist_name"]. "<br>";
         $s_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
-                    FROM Add_Song
-                    WHERE Add_Song.Playlist_name = $row["Playlist_name"]";
+        FROM Add_Song
+        WHERE Add_Song.Playlist_name = $row["Playlist_name"]";
         $s_result = $conn->query($s_query);
 
         if($s_result->num_rows > 0)
