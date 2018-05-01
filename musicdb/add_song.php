@@ -64,14 +64,16 @@ $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
+$song_name = $_GET['song_name'];
+$artist_name = $_GET['artist_name'];
+$album_name  = $_GET['album_name'];
+$plname = $_GET['pl_name'];
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn)
 {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-$song_name = $_GET['song_name'];
-$plname = $_GET['pl_name'];
 
   $song_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
                   FROM Add_Song
@@ -79,9 +81,9 @@ $plname = $_GET['pl_name'];
 
   $song = $conn->query($song_query);
   $row = $song->fetch_assoc();
-  $song_name = $row["Song_name"];
-  $artist_name = $row["Artist_name"];
-  $album_name = $row["Album_name"];
+  //$song_name = $row["Song_name"];
+  //$artist_name = $row["Artist_name"];
+  //$album_name = $row["Album_name"];
 
   $add_song = "INSERT INTO Add_Song(User_name, Playlist_name, Song_name, Artist_name, Album_name)
                   VALUES ('BlueMan', '$plname', '$song_name', '$artist_name', '$album_name')";

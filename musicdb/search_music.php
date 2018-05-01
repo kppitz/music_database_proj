@@ -50,7 +50,6 @@
 </html>
 
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -83,14 +82,14 @@ if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album
   }
   else if (!empty($_GET['album_name']))
   {
-    $album=($_GET['album_name']);
+    $album=$_GET['album_name'];
     $sql = "SELECT Song.Song_name, Song.Artist_name, Song.Album_name
             FROM Song
             WHERE Song.Album_name = '$album'";
   }
   else if (!empty($_GET['genre']))
   {
-    $genre=($_GET['genre']);
+    $genre=$_GET['genre'];
     $sql = "SELECT Song.Song_name, Song.Artist_name, Song.Album_name
             FROM Song, Album
             WHERE Song.Album_name = Album.Album_name AND Album.genre = '$genre'";
@@ -122,6 +121,8 @@ if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album
                   <td>" . $row["Album_name"]. "</td>
                   <td>
                   <input type='hidden' name='song_name' value='$song_name'>
+                  <input type='hidden' name='artist_name' value='$artist_name'>
+                  <input type='hidden' name='album_name' value='$album_name'>
                   <button type='submit' class='btn-outline-primary btn-sm'>
                   Add to Playlist</button></td>
                   </tr>

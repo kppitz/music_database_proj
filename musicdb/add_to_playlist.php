@@ -59,13 +59,14 @@
     </html>
 
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
 $song_name  = $_GET['song_name'];
+$artist_name  = $_GET['artist_name'];
+$album_name  = $_GET['album_name'];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -94,9 +95,10 @@ if ($pl_result->num_rows > 0)
   {
     $plname = $row["Playlist_name"];
 
-    echo "
-            <form method='get' action='add_song.php'>
+    echo "  <form method='get' action='add_song.php'>
             <input type='hidden' name='song_name' value='$song_name'>
+            <input type='hidden' name='artist_name' value='$artist_name'>
+            <input type='hidden' name='album_name' value='$album_name'>
             <input type='hidden' name='pl_name' value='$plname'>
             <button type='submit' class='btn-outline-primary btn-sm'>
             Add to Playlist</button></form>";

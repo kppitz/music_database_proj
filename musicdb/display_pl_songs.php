@@ -109,13 +109,16 @@ if($s_result->num_rows > 0)
         echo"<tr>
               <td>" . $row["Song_name"]. "</td>
               <td>" . $row["Artist_name"]. "</td>
-              <td>" . $row["Album_name"]. "</td>";
+              <td>" . $row["Album_name"]. "</td>
+              <td><form action='add_to_playlist.php'>
+                      <input type='hidden' name='song_name' value='$song_name'>
+                      <input type='hidden' name='artist_name' value='$artist_name'>
+                      <input type='hidden' name='album_name' value='$album_name'>
+                      <button type='submit' class='btn-outline-primary btn-sm'>
+                    Add to Playlist</button></form></td>";
               if($user == 'BlueMan')
               {
-                echo "<td><form action='add_to_playlist.php'>
-                        <input type='hidden' name='song_name' value='$song_name'>
-                        <button type='submit' class='btn-outline-primary btn-sm'>
-                      Add to Playlist</button></form></td>
+                echo "
                       <td><form method='get' action='remove_song.php'>
                         <input type='hidden' name='song_name' value='$song_name'>
                         <input type='hidden' name='plname' value='$plname'>
