@@ -56,6 +56,17 @@
   </div>
   </form>
 
+  <form class="col-lg-6" action="create_playlist.php" method="get">
+    <div class="form-group">
+      <label for="playlist_name">Create Playlist</label>
+      <div class="form-inline">
+      <input type="text" class="form-control" id="playlist_name"  placeholder="Enter Playlist Name"
+            name = "playlist_name">
+      <button type="submit" class="btn btn-primary">Create Playlist</button>
+    </div>
+  </div>
+  </form>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

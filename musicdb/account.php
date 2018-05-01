@@ -1,4 +1,32 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "musicdbproject";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if (!$conn)
+{
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$useremail = "SELECT User_Account.Email FROM User_Account WHERE User_Account.User_name = 'BlueMan'";
+$namef = "SELECT User_Account.First_name FROM User_Account WHERE User_Account.User_name = 'BlueMan'";
+$namel = "SELECT User_Account.Last_name FROM User_Account WHERE User_Account.User_name = 'BlueMan'";
+
+$res_useremail = $conn->query($useremail);
+$res_namef = $conn->query($namef);
+$res_namel = $conn->query($namel);
+
+$email_data = $res_useremail->fetch_assoc();
+$namef_data = $res_namef->fetch_assoc();
+$namel_data = $res_namel->fetch_assoc();
+
+mysqli_close($conn);
+?>
+
 <html lang="en">
 
 <head>
@@ -47,28 +75,26 @@
   </div>
 
   <h5 class="col-lg-6 display-5">Change Account Settings</h5>
-  <h6 class="col-lg-6 display-5">Cannot change username and email at the same time!</h6>
+  <h6 class="col-lg-6 display-5">Please fill in all fields, BlueMan!</h6>
   <hr class="my-3">
   <form class="col-md-4" action="create_account.php" method="get">
     <div class="form-group">
       <label for="input_email">Email Address</label>
-      <input type="email" class="form-control" id="input_email"  placeholder="blueman@aol.com"
+      <input type="text" class="form-control" id="input_email"
+              placeholder=<?php echo $email_data["Email"]; ?>
               name = "email">
-    </div>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username"
-        placeholder="BlueMan" name = "username">
     </div>
     <div class="form-group">
       <label for="f_name">First Name</label>
       <input type="text" class="form-control" id="f_name"
-        placeholder="John" name = "f_name">
+              placeholder=<?php echo $namef_data["First_name"]; ?>
+              name = "f_name">
     </div>
     <div class="form-group">
       <label for="l_name">Last Name</label>
       <input type="text" class="form-control" id="l_name"
-        placeholder="Smith" name = "l_name">
+              placeholder=<?php echo $namel_data["Last_name"]; ?>
+              name = "l_name">
     </div>
   <button type="submit" class="btn btn-primary">Save Changes</button>
 
