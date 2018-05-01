@@ -40,7 +40,7 @@
   </nav>
 
   <div class="Jumbotron">
-      <h1 class="display-4">Removed from Playlist Successfully!</h1>
+      <h1 class="display-4">Playlists</h1>
       <hr class="my-3">
         <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
   </div>
@@ -69,5 +69,8 @@
   if (!mysqli_query($conn, $sql))
   {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+  else {
+    echo "<h5>Song removed Successfully!</h5>";
   }
    ?>

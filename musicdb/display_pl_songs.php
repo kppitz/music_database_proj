@@ -123,7 +123,7 @@ if($s_result->num_rows > 0)
                         <input type='hidden' name='song_name' value='$song_name'>
                         <input type='hidden' name='plname' value='$plname'>
                         <button type='submit' class='btn-outline-danger btn-sm'>
-                      Remove From Playlist</button></form></td>";
+                      Remove Song</button></form></td>";
               }
               echo "</tr>";
     }

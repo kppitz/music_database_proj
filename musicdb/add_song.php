@@ -40,9 +40,9 @@
   </nav>
 
   <div class="Jumbotron">
-      <h1 class="display-4">Added to Playlist Successfully!</h1>
+      <h1 class="display-4">Playlists</h1>
       <hr class="my-3">
-        <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
+        <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Search</a></h6>
   </div>
   <hr class="my-3">
 
@@ -75,22 +75,35 @@ if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 }
 
-  $song_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
+  $song_query = "SELECT Add_Song.User_name, Add_Song.Playlist_name, Song_name, Add_Song.Artist_name, Add_Song.Album_name
                   FROM Add_Song
                   WHERE Add_Song.Song_name = '$song_name'";
 
   $song = $conn->query($song_query);
   $row = $song->fetch_assoc();
-  //$song_name = $row["Song_name"];
-  //$artist_name = $row["Artist_name"];
-  //$album_name = $row["Album_name"];
+  $user = $row["User_name"];
+  $pl_name = $row["Playlist_name"];
+  $s_name = $row["Song_name"];
+  $ar_name = $row["Artist_name"];
+  $al_name = $row["Album_name"];
 
-  $add_song = "INSERT INTO Add_Song(User_name, Playlist_name, Song_name, Artist_name, Album_name)
-                  VALUES ('BlueMan', '$plname', '$song_name', '$artist_name', '$album_name')";
-
-
-  if (!mysqli_query($conn, $add_song))
+  if($user == 'BlueMan' && $pl_name == $pl_name && $s_name == $song_name && $ar_name == $artist_name
+      && $al_name == $album_name)
+      {
+        echo "<h5>Song already in playlist.</h5>";
+      }
+  else
   {
-    echo "Error: " . $add_song . "<br>" . mysqli_error($conn);
+    $add_song = "INSERT INTO Add_Song(User_name, Playlist_name, Song_name, Artist_name, Album_name)
+                    VALUES ('BlueMan', '$plname', '$song_name', '$artist_name', '$album_name')";
+
+
+    if (!mysqli_query($conn, $add_song))
+    {
+      echo "Error: " . $add_song . "<br>" . mysqli_error($conn);
+    }
+    else {
+      echo "<h5>Song added Successfully!</h5>";
+    }
   }
 ?>

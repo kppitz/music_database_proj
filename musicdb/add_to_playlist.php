@@ -95,13 +95,13 @@ if ($pl_result->num_rows > 0)
   {
     $plname = $row["Playlist_name"];
 
-    echo "  <form method='get' action='add_song.php'>
+    echo "<tr><form method='get' action='add_song.php'><td>
             <input type='hidden' name='song_name' value='$song_name'>
             <input type='hidden' name='artist_name' value='$artist_name'>
             <input type='hidden' name='album_name' value='$album_name'>
             <input type='hidden' name='pl_name' value='$plname'>
-            <button type='submit' class='btn-outline-primary btn-sm'>
-            Add to Playlist</button></form>";
+            <button type='submit' class='btn-outline-primary btn-md'>"
+            .$plname. "</button></td></form></tr>";
   }
 }
 else

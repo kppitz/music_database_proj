@@ -42,7 +42,7 @@
   <div class="Jumbotron">
     <h1 class="col-lg-6 display-4"> Playlist Results</h1>
     <hr class="my-3">
-    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Search</a></h6>
+    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Playlist Search</a></h6>
     <hr class="my-3">
   </div>
   </body>
@@ -88,10 +88,23 @@ if(!empty($_GET['username']))
     while($row = $pl_result->fetch_assoc())
     {
       $plname = $row["Playlist_name"];
-        echo "<form method='get' action='display_pl_songs.php'>
-              <input type='hidden' name='pl_name' value='$plname'>
-              <input type='hidden' name='user_name' value='$user'>
-              <button type='submit' class='btn btn-outline-primary'>".$plname."</button>";
+
+        echo "<tr>
+              <td><form method='get' action='display_pl_songs.php'>
+                <input type='hidden' name='pl_name' value='$plname'>
+                <input type='hidden' name='user_name' value='$user'>
+                <button type='submit' class='btn btn-outline-primary'>".$plname."
+                </button></form></td>
+              <td>".$user."</td>";
+        if($user == 'BlueMan')
+        {
+          echo "
+                <td><form method='get' action='remove_pl.php'>
+                  <input type='hidden' name='plname' value='$plname'>
+                  <button type='submit' class='btn-outline-danger btn-sm'>
+                  Remove Playlist</button></form></td>";
+        }
+        echo "</tr>";
     }
   }
   else
