@@ -49,7 +49,6 @@
   </html>
 
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -70,7 +69,9 @@ if(!empty($_GET['username']))
 {
   $user = $_GET['username'];
 
-  $pl_query = "SELECT Playlist.Playlist_name FROM Playlist WHERE Playlist.User_name = '$user'";
+  $pl_query = "SELECT Playlist.Playlist_name
+              FROM Playlist
+              WHERE Playlist.User_name = '$user'";
 
   $pl_result = $conn->query($pl_query);
 
@@ -87,13 +88,10 @@ if(!empty($_GET['username']))
     while($row = $pl_result->fetch_assoc())
     {
       $plname = $row["Playlist_name"];
-      $_SESSION['plname'] = $plname;
-      $_SESSION['user'] = $user;
-
-      echo "<tr>
-              <td><a href='display_pl_songs.php'>" . $plname. "</a></td>
-              <td>" . $user. "</td>
-            </tr>";
+        echo "<form method='get' action='display_pl_songs.php'>
+              <input type='hidden' name='pl_name' value='$plname'>
+              <input type='hidden' name='user_name' value='$user'>
+              <button type='submit' class='btn btn-outline-primary'>".$plname."</button>";
     }
   }
   else

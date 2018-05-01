@@ -45,18 +45,26 @@
     <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Playlist Search</a></h6>
     <hr class="my-3">
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
   </body>
   </html>
 
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "musicdbproject";
 
-$plname = $_SESSION['plname'];
-$user = $_SESSION['user'];
+$s_query = "";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if (!$conn)
@@ -64,40 +72,67 @@ if (!$conn)
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$plname = $_GET['pl_name'];
+$user = $_GET['user_name'];
+
 $s_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
             FROM Add_Song
-            WHERE Add_Song.Playlist_name = '$plname' AND Add_Song.User_name = '$user'";
+            WHERE Add_Song.Playlist_name='$plname' AND Add_Song.User_name='$user'";
 
 $s_result = $conn->query($s_query);
 
+$add_query = "SELECT COUNT(Add_Song.Song_name)
+              FROM Add_Song
+              WHERE Add_Song.Playlist_name = '$plname' AND Add_Song.User_name = '$user'";
+
+$add_result = $conn->query($add_query);
+$add_rows = $add_result->fetch_assoc();
+
 if($s_result->num_rows > 0)
 {
-    echo "<table class='table table-hover'>
-              <thead>
-                <tr>
-                <th scope='col'>Song</th>
-                <th scope='col'>Artist</th>
-                <th scope='col'>Album</th>
-                <th></th>
-                </tr>
-              </thead>";
+  echo "<h5>" .$plname. "</h5>
+        <table class='table table-hover'>
+        <thead>
+          <tr>
+          <th scope='col'>Song</th>
+          <th scope='col'>Artist</th>
+          <th scope='col'>Album</th>
+          <th>Number of Songs: " .$add_rows['COUNT(Add_Song.Song_name)']. "</th>
+          </tr>
+        </thead>";
     while($row = $s_result->fetch_assoc())
     {
         $song_name = $row["Song_name"];
         $artist_name = $row["Artist_name"];
         $album_name = $row["Album_name"];
 
-        echo"<form>
-              <tr>
-                <td>" . $row["Song_name"]. "</td>
-                <td>" . $row["Artist_name"]. "</td>
-                <td>" . $row["Album_name"]. "</td>
-                <td><button type='button' action='add_song($song_name, $artist_name, $album_name)'
-                  class='btn-outline-primary btn-sm'>Add to Playlist
-                </button>
-                </tr>
-              </form>";
+        echo"<tr>
+              <td>" . $row["Song_name"]. "</td>
+              <td>" . $row["Artist_name"]. "</td>
+              <td>" . $row["Album_name"]. "</td>";
+              if($user == 'BlueMan')
+              {
+                echo "<td><form action='add_to_playlist.php'>
+                        <input type='hidden' name='song_name' value='$song_name'>
+                        <button type='submit' class='btn-outline-primary btn-sm'>
+                      Add to Playlist</button></form></td>
+                      <td><form method='get' action='remove_song.php'>
+                        <input type='hidden' name='song_name' value='$song_name'>
+                        <input type='hidden' name='plname' value='$plname'>
+                        <button type='submit' class='btn-outline-danger btn-sm'>
+                      Remove From Playlist</button></form></td>";
+              }
+              echo "</tr>";
     }
+  }
+  else
+  {
+    echo "<h5>Playlist is empty.</h5>";
+  }
+
+  if (!mysqli_query($conn, $s_query))
+  {
+    echo "Error: " . $s_query . "<br>" . mysqli_error($conn);
   }
 
 mysqli_close($conn);

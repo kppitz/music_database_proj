@@ -40,55 +40,34 @@
   </nav>
 
   <div class="Jumbotron">
-      <h1 class="display-4">Added to Playlist Successfully!</h1>
+      <h1 class="display-4">Removed from Playlist Successfully!</h1>
       <hr class="my-3">
         <h6 class="col-sm-4"><a class="link" href="search.php"> Return to Search</a></h6>
   </div>
   <hr class="my-3">
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
-  </body>
-  </html>
+  <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "musicdbproject";
 
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "musicdbproject";
+  $song_name  = $_GET['song_name'];
+  $plname = $_GET['plname'];
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if (!$conn)
-{
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-$song_name = $_GET['song_name'];
-$plname = $_GET['pl_name'];
-
-  $song_query = "SELECT Add_Song.Song_name, Add_Song.Artist_name, Add_Song.Album_name
-                  FROM Add_Song
-                  WHERE Add_Song.Song_name = '$song_name'";
-
-  $song = $conn->query($song_query);
-  $row = $song->fetch_assoc();
-  $song_name = $row["Song_name"];
-  $artist_name = $row["Artist_name"];
-  $album_name = $row["Album_name"];
-
-  $add_song = "INSERT INTO Add_Song(User_name, Playlist_name, Song_name, Artist_name, Album_name)
-                  VALUES ('BlueMan', '$plname', '$song_name', '$artist_name', '$album_name')";
-
-
-  if (!mysqli_query($conn, $add_song))
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  if (!$conn)
   {
-    echo "Error: " . $add_song . "<br>" . mysqli_error($conn);
+      die("Connection failed: " . mysqli_connect_error());
   }
-?>
+
+  $sql = "DELETE FROM Add_Song
+          WHERE Add_Song.song_name = '$song_name' AND Add_Song.Playlist_name = '$plname'
+          AND Add_Song.User_name = 'BlueMan'";
+
+
+  if (!mysqli_query($conn, $sql))
+  {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+   ?>
