@@ -50,6 +50,7 @@
 </html>
 
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -62,12 +63,6 @@ if (!$conn)
 }
 
 $sql="";
-
-function add_song($song_name, $artist_name, $album_name)
-{
-  $sql = "INSERT INTO Add_Song(Username, Playlist_name, Song_name, Artist_name, Album_name);
-          VALUES ('Me', 'Library', '$song_name', '$artist_name', '$album_name')";
-}
 
 if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album_name'])
     ||!empty($_GET['genre']))
@@ -119,14 +114,17 @@ if(!empty($_GET['song_name'])||!empty($_GET['artist_name'])||!empty($_GET['album
           $song_name = $row["Song_name"];
           $artist_name = $row["Artist_name"];
           $album_name = $row["Album_name"];
+          $_SESSION['Song_name'] = $song_name;
+          $_SESSION['Artist_name'] = $artist_name;
+          $_SESSION['Album_name'] = $album_name;
 
-          echo"<form>
+          echo"<form action='add_song.php'>
                 <tr>
                   <td>" . $row["Song_name"]. "</td>
                   <td>" . $row["Artist_name"]. "</td>
                   <td>" . $row["Album_name"]. "</td>
-                  <td><button type='button' action='add_song($song_name, $artist_name, $album_name)'
-                    class='btn-outline-primary btn-sm'>Add to Playlist
+                  <td><button type='button' class='btn-outline-primary btn-sm'>
+                  <a href='add_song.php'>Add to Playlist</a>
                   </button>
                   </tr>
                 </form>";

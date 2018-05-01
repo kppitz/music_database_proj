@@ -47,7 +47,7 @@
 
   <form class="col-lg-6" action="display_playlist.php" method="get">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="username">Search by Username</label>
       <div class="form-inline">
       <input type="text" class="form-control" id="username"  placeholder="Enter username"
             name = "username">

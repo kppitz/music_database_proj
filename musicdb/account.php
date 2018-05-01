@@ -51,23 +51,24 @@
   <hr class="my-3">
   <form class="col-md-4" action="create_account.php" method="get">
     <div class="form-group">
-      <label for="input_email">Email address</label>
-      <input type="email" class="form-control" id="input_email"  placeholder="Enter Email" name = "email">
+      <label for="input_email">Email Address</label>
+      <input type="email" class="form-control" id="input_email"  placeholder="blueman@aol.com"
+              name = "email">
     </div>
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username"
-        placeholder="Enter Username" name = "username">
+        placeholder="BlueMan" name = "username">
     </div>
     <div class="form-group">
       <label for="f_name">First Name</label>
       <input type="text" class="form-control" id="f_name"
-        placeholder="Enter First Name" name = "f_name">
+        placeholder="John" name = "f_name">
     </div>
     <div class="form-group">
       <label for="l_name">Last Name</label>
       <input type="text" class="form-control" id="l_name"
-        placeholder="Enter Last Name" name = "l_name">
+        placeholder="Smith" name = "l_name">
     </div>
   <button type="submit" class="btn btn-primary">Save Changes</button>
 
