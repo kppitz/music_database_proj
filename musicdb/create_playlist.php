@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+<?php
+
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "musicdbproject";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if (!$conn)
+{
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$pl_name = $_GET["playlist_name"];
+
+$sql = "INSERT INTO Playlist VALUES('$pl_name', '0', '0', 'BlueMan')";
+
+if (!mysqli_query($conn, $sql))
+{
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+
+?>
+
 <html lang="en">
 
 <head>
@@ -39,33 +66,11 @@
   </nav>
 
   <div class="Jumbotron">
-    <h1 class="col-lg-6 display-4">Playlists</h1>
+    <h1 class="col-lg-6 display-4"> Playlist Created Successfully!</h1>
     <hr class="my-3">
-    <h5 class="col-lg-6">View your playlists or another user's playlists</h5>
+    <h6 class="col-sm-4"><a class="link" href="playlists.php"> Return to Search</a></h6>
     <hr class="my-3">
   </div>
-
-  <form class="col-lg-6" action="display_playlist.php" method="get">
-    <div class="form-group">
-      <label for="username">Search by Username</label>
-      <div class="form-inline">
-      <input type="text" class="form-control" id="username"  placeholder="Enter username"
-            name = "username">
-      <button type="submit" class="btn btn-primary">Find Playlists</button>
-    </div>
-  </div>
-  </form>
-
-  <form class="col-lg-6" action="create_playlist.php" method="get">
-    <div class="form-group">
-      <label for="playlist_name">Create Playlist</label>
-      <div class="form-inline">
-      <input type="text" class="form-control" id="playlist_name"  placeholder="Enter Playlist Name"
-            name = "playlist_name">
-      <button type="submit" class="btn btn-primary">Create Playlist</button>
-    </div>
-  </div>
-  </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
